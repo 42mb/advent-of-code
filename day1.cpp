@@ -8,7 +8,7 @@
 void day1_1() {
   int max_calories{};
   std::fstream file;
-  file.open("input_day1p1.txt", std::ios::in);
+  file.open("inputfiles/input_day1p1.txt", std::ios::in);
   if (file.is_open()) {
     std::string line;
     int calories{};
@@ -29,12 +29,12 @@ void day1_2() {
   std::vector<int> max_calories(3, 0);
 
   std::fstream file;
-  file.open("input_day1p1.txt", std::ios::in);
+  file.open("inputfiles/input_day1p1.txt", std::ios::in);
   if (file.is_open()) {
     std::string line;
     int calories{};
     while (getline(file, line)) {
-      //  std::cout<<line<<"\n";
+      std::cout << line << "\n";
       if (!line.empty()) {
         calories += std::stoi(line);
       } else {
