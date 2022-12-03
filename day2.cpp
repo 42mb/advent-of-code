@@ -12,19 +12,40 @@ void day2_1() {
   std::string player_enemy{};
   int score{};
 
+  struct {
+    const std::string rock = "X";
+    const std::string paper = "Y";
+    const std::string scissor = "Z";
+  } player;
+
+  struct {
+    const std::string rock = "A";
+    const std::string paper = "B";
+    const std::string scissor = "C";
+  } enemy;
+
+  enum struct points {
+    draw = 3,
+    win = 6,
+    lose = 0,
+    forRock = 1,
+    forPaper = 2,
+    forScissor = 3
+  };
+
   while (file >> player_enemy, file >> player1) {
     // std::cout << player_enemy << " " << player1 << "\n";
 
-    if (player1 == "X") {
-      score += 1;
-      if (player_enemy == "A") {
-        score += 3;
+    if (player1 == player.rock) {
+      score += static_cast<int>(points::forRock);
+      if (player_enemy == enemy.rock) {
+        score += static_cast<int>(points::draw);
       }
-      if (player_enemy == "B") {
-        score += 0;
+      if (player_enemy == enemy.paper) {
+        score += static_cast<int>(points::lose);
       }
-      if (player_enemy == "C") {
-        score += 6;
+      if (player_enemy == enemy.scissor) {
+        score += static_cast<int>(points::win);
       }
     }
 
@@ -58,7 +79,7 @@ void day2_1() {
 }
 
 void day2_2() {
-  std::ifstream file("input_day2.txt");
+  std::ifstream file("inputfiles/input_day2.txt");
   std::string player1{};
   std::string player_enemy{};
   int score{};
@@ -70,9 +91,16 @@ void day2_2() {
   std::string paper = "B";
   std::string scissor = "C";
 
+  enum struct score {
+    win = 6,
+    lose = 0,
+    draw = 3
+
+  };
+
   while (file >> player_enemy, file >> player1) {
     if (player1 == lose) {
-      score += 0;
+      score += static_cast<int>(score::lose);
       if (player_enemy == rock) {
         score += 3;
       }
@@ -84,7 +112,7 @@ void day2_2() {
       }
     }
     if (player1 == draw) {
-      score += 3;
+      score += static_cast<int>(score::draw);
       if (player_enemy == rock) {
         score += 1;
       }
@@ -96,7 +124,7 @@ void day2_2() {
       }
     }
     if (player1 == win) {
-      score += 6;
+      score += static_cast<int>(score::win);
       if (player_enemy == rock) {
         score += 2;
       }
