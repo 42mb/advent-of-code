@@ -39,6 +39,8 @@ void day1_2() {
         calories += std::stoi(line);
       } else {
         max_calories.push_back(calories);
+        // todo better use std::array<int, 3> ->compare if larger than array[2]
+        // -> if(true)swap -> resort
         std::sort(max_calories.rbegin(), max_calories.rend());
         // std::ranges::sort(max_calories, std::ranges::greater());
         max_calories.pop_back();
