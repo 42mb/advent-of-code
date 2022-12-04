@@ -19,9 +19,9 @@ int determine_item_priority_day1(int item) {
 }
 
 int find_wrongly_placed_item_day1(std::string &line) {
+  // TODO version with map
   int line_size = line.size();
   int line_center = line_size / 2;
-  int line_nmb{};
   for (int i = 0; i < line_center; ++i) {
     for (int j = line_center; j < line_size; ++j) {
       if (line[i] == line[j]) {
@@ -30,6 +30,7 @@ int find_wrongly_placed_item_day1(std::string &line) {
       }
     }
   }
+  return 0;
 }
 
 void day3_1() {
@@ -80,24 +81,19 @@ void day3_2() {
     int counter{1};
     while (getline(file, line)) {
       // std::cout << line << "\n";
-      bool onlyonce = true;
-      if (counter == 1 && onlyonce) {
-        onlyonce = false;
+      if (counter == 1) {
         line1 = line;
-        counter++;
       }
-      if (counter == 2 && onlyonce) {
-        onlyonce = false;
+      if (counter == 2) {
         line2 = line;
-        counter++;
       }
-      if (counter == 3 && onlyonce) {
-        onlyonce = false;
+      if (counter == 3) {
         line3 = line;
-        counter = 1;
+        counter = 0;
         int badge = find_badge(line1, line2, line3);
         result += determine_item_priority_day1(badge);
       }
+      counter++;
     }
   }
   std::cout << '\n' << result << "\n\n";
