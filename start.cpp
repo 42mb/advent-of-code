@@ -2,6 +2,7 @@
 #include "day2.cpp"
 #include "day3.cpp"
 #include "day4.cpp"
+#include "day5.cpp"
 
 int main() {
   // day1_1();
@@ -11,7 +12,9 @@ int main() {
   // day3_1();
   // day3_2();
   // day4_1();
-  day4_2();
+  //  day4_2();
+  day5_1(); // WIP
+  // day5_2(); //WIP
 
   return 0;
 }
