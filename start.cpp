@@ -13,8 +13,8 @@ int main() {
   // day3_2();
   // day4_1();
   //  day4_2();
-  day5_1(); // WIP
-  // day5_2(); //WIP
+  // day5_1(); // WIP
+  day5_2(); // WIP
 
   return 0;
 }

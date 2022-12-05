@@ -9,7 +9,7 @@
 
 /////////////////////////////////////////
 /////////////////   WIP    //////////////
-/////////////////////////////////////////
+////////////////////////////////////////
 
 // // Try to determine the amount of stacks needed and
 // // automaticly create and fill them within an vector<deque< >>
@@ -77,37 +77,38 @@ void day5_1() {
       std::deque<std::string>{"M", "V", "Z", "W", "S", "J", "D", "P"});
   stacks.push_back(std::deque<std::string>{"N", "D", "S"});
   stacks.push_back(std::deque<std::string>{"D", "Z", "S", "F", "M"});
-
+  int cnt{0};
   int move{}, from{}, to{};
   std::fstream file;
-  file.open("inputfiles/input_day5.test", std::ios::in);
+  file.open("inputfiles/input_day5.prod", std::ios::in);
   if (file.is_open()) {
     std::string line;
     while (getline(file, line)) {
       // std::cout << line << std::endl;
       if (line[0] == 'm') {
-
+        cnt++;
         to = static_cast<int>(line[size(line) - 1]) - 48 - 1;
         // -1 for length offset                 ^
         //   -48 for char conv (better use -'0')       ^
         // -1 for array offset                             ^
         from = static_cast<int>(line[size(line) - 6]) - 48 - 1;
-        if (std::isdigit(line[6])) {
+        if (std::isdigit(static_cast<int>(line[6]))) {
           move = static_cast<int>(line[6]) - 48 +
                  10 * (static_cast<int>(line[5]) - 48);
+
         } else {
           move = static_cast<int>(line[5]) - 48;
         }
 
-        // std::cout << "   " << move << "\t" << from << "\t" << to << "\n\n";
+        std::cout << "   " << move << "\t" << from << "\t" << to << "\n\n";
         for (int i = 0; i < move; ++i) {
-          // alternative, same result
-          //   stacks[to].insert(stacks[to].end(), stacks[from].back());
-          //   stacks[from].pop_back();
-
-          std::string s = stacks[from].back();
-          stacks[to].emplace_back(stacks[from].back());
+          //   alternative, same result
+          stacks[to].insert(stacks[to].end(), stacks[from].back());
           stacks[from].pop_back();
+
+          //   std::string s = stacks[from].back();
+          //   stacks[to].emplace_back(stacks[from].back());
+          //   stacks[from].pop_back();
         }
       }
     }
@@ -121,6 +122,77 @@ void day5_1() {
   }
   std::cout << "\n";
   std::cout << result;
+  std::cout << "\n";
+  std::cout << cnt;
+  std::cout << "\n";
 }
 
-// void day5_2() {}
+void day5_2() {
+  std::deque<std::string> tmp;
+  std::vector<std::deque<std::string>> stacks;
+  // debug test,  !!! result loop <3 umschreiben!!
+  // stacks.push_back(std::deque<std::string>{"Z", "N"});
+  // stacks.push_back(std::deque<std::string>{"M", "C", "D"});
+  // stacks.push_back(std::deque<std::string>{"P"});
+
+  stacks.push_back(std::deque<std::string>{"F", "C", "J", "P", "H", "T", "W"});
+  stacks.push_back(
+      std::deque<std::string>{"G", "R", "V", "F", "Z", "J", "B", "H"});
+  stacks.push_back(std::deque<std::string>{"H", "P", "T", "R"});
+  stacks.push_back(std::deque<std::string>{"Z", "S", "N", "P", "H", "T"});
+  stacks.push_back(
+      std::deque<std::string>{"N", "V", "F", "Z", "H", "J", "C", "D"});
+  stacks.push_back(std::deque<std::string>{"P", "M", "G", "F", "W", "D", "Z"});
+  stacks.push_back(
+      std::deque<std::string>{"M", "V", "Z", "W", "S", "J", "D", "P"});
+  stacks.push_back(std::deque<std::string>{"N", "D", "S"});
+  stacks.push_back(std::deque<std::string>{"D", "Z", "S", "F", "M"});
+  int cnt{0};
+  int move{}, from{}, to{};
+  std::fstream file;
+  file.open("inputfiles/input_day5.prod", std::ios::in);
+  if (file.is_open()) {
+    std::string line;
+    while (getline(file, line)) {
+      // std::cout << line << std::endl;
+      if (line[0] == 'm') {
+        cnt++;
+        to = static_cast<int>(line[size(line) - 1]) - 48 - 1;
+        // -1 for length offset                 ^
+        //   -48 for char conv (better use -'0')       ^
+        // -1 for array offset                             ^
+        from = static_cast<int>(line[size(line) - 6]) - 48 - 1;
+        if (std::isdigit(static_cast<int>(line[6]))) {
+          move = static_cast<int>(line[6]) - 48 +
+                 10 * (static_cast<int>(line[5]) - 48);
+
+        } else {
+          move = static_cast<int>(line[5]) - 48;
+        }
+
+        std::cout << "   " << move << "\t" << from << "\t" << to << "\n\n";
+        for (int i = 0; i < move; ++i) {
+          tmp.push_front(stacks[from].back());
+          stacks[from].pop_back();
+        }
+        for (int i = 0; i < move; ++i) {
+          stacks[to].push_back(tmp.front());
+          tmp.pop_front();
+        }
+      }
+    }
+  }
+
+  std::string result{""};
+  for (int i = 0; i < 9; ++i) {
+
+    result += stacks[i].back();
+
+    std::cout << stacks[i].back();
+  }
+  std::cout << "\n";
+  std::cout << result;
+  std::cout << "\n";
+  std::cout << cnt;
+  std::cout << "\n";
+}
