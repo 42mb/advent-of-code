@@ -7,56 +7,171 @@
 #include <string>
 #include <vector>
 
-/////////////////////////////////////////
-/////////////////   WIP    //////////////
-////////////////////////////////////////
+void day5_1b() {
 
-// // Try to determine the amount of stacks needed and
-// // automaticly create and fill them within an vector<deque< >>
-// // viable for different inputs (eg. amount of stacks)
+  std::fstream file1;
+  std::string container;
+  int stack_number{0}, move{}, from{}, to{};
 
-// void day5_0() {
+  // read out stack_number
+  file1.open("inputfiles/input_day5.prod", std::ios::in);
+  if (file1.is_open()) {
+    std::string line;
+    while (getline(file1, line)) {
+      // std::cout << line << '\n';
+      if (std::isdigit(line[1])) {
+        stack_number = static_cast<int>(line[size(line) - 2]) - 48;
+        break;
+      }
+    }
+  }
 
-//   std::fstream file;
-//   std::string container;
-//   int stack_number{0}, move{}, from{}, to{};
+  file1.close();
 
-//   // read out stack_number
-//   file.open("inputfiles/input_day5.test", std::ios::in);
-//   if (file.is_open()) {
-//     std::string line;
-//     while (getline(file, line)) {
-//       // std::cout << line << '\n';
-//       if (std::isdigit(line[1])) {
-//         stack_number = static_cast<int>(line[size(line) - 2]) - 48;
-//         break;
-//       }
-//     }
-//   }
-//   std::vector<std::deque<std::string>> stacks;
+  std::vector<std::deque<std::string>> stacks;
+  for (int i = 0; i < stack_number; ++i) {
+    stacks.push_back(std::deque<std::string>{});
+  }
 
-//   //   for (int i = 0; i < stack_number; ++i) {
-//   //     auto p = new std::deque<char>;
-//   //     stacks.push_back(*p);
-//   //   }
+  std::fstream file;
+  file.open("inputfiles/input_day5.prod", std::ios::in);
+  if (file.is_open()) {
+    std::string line{};
+    while (getline(file, line)) {
+      // std::cout << line.size() << line << '\n';
+      if (line[0] != 'm' && line.size() > 0 && line[1] != '1') {
+        for (int i = 0, k = 1; i < stack_number; ++i, k += 4) {
+          // std::cout << line[k];
+          std::string s(1, line[k]);
+          if (s != " ") {
+            stacks[i].emplace_front(s);
+          }
+        }
+      }
+      if (line[0] == 'm') {
 
-//   for (int i = 0; i < stack_number; ++i) {
-//     stacks.push_back(std::deque<std::string>());
-//   }
+        to = static_cast<int>(line[size(line) - 1]) - 48 - 1;
+        // -1 for length offset                 ^
+        //   -48 for char conv (better use -'0')       ^
+        // -1 for array offset                             ^
+        from = static_cast<int>(line[size(line) - 6]) - 48 - 1;
+        if (std::isdigit(static_cast<int>(line[6]))) {
+          move = static_cast<int>(line[6]) - 48 +
+                 10 * (static_cast<int>(line[5]) - 48);
 
-//   file.close();
-//   file.open("inputfiles/input_day5.test", std::ios::in);
-//   if (file.is_open()) {
-//     std::string line;
-//     while (getline(file, line)) {
-//       for (int i = 0, k = 1; i < stack_number; ++i, k += 4) {
-//         stacks[i].emplace_front(line[k]);
-//         std::cout << "blub";
-//       }
-//     }
-//   }
-// }
+        } else {
+          move = static_cast<int>(line[5]) - 48;
+        }
 
+        // std::cout << "   " << move << "\t" << from << "\t" << to << "\n\n";
+        for (int i = 0; i < move; ++i) {
+          //   alternative, same result
+          //   stacks[to].insert(stacks[to].end(), stacks[from].back());
+          //   stacks[from].pop_back();
+
+          // std::string s = stacks[from].back();
+          stacks[to].emplace_back(stacks[from].back());
+          stacks[from].pop_back();
+        }
+      }
+    }
+  }
+  std::string result{""};
+  for (int i = 0; i < stack_number; ++i) {
+
+    result += stacks[i].back();
+
+    std::cout << stacks[i].back();
+  }
+  std::cout << "\n";
+  std::cout << result;
+  std::cout << "\n";
+  std::cout << "\n";
+}
+
+void day5_2b() {
+  std::fstream file1;
+  std::string container;
+  int stack_number{0}, move{}, from{}, to{};
+
+  // read out stack_number
+  file1.open("inputfiles/input_day5.prod", std::ios::in);
+  if (file1.is_open()) {
+    std::string line;
+    while (getline(file1, line)) {
+      // std::cout << line << '\n';
+      if (std::isdigit(line[1])) {
+        stack_number = static_cast<int>(line[size(line) - 2]) - 48;
+        break;
+      }
+    }
+  }
+
+  file1.close();
+  std::deque<std::string> tmp;
+  std::vector<std::deque<std::string>> stacks;
+  for (int i = 0; i < stack_number; ++i) {
+    stacks.push_back(std::deque<std::string>{});
+  }
+
+  std::fstream file;
+  file.open("inputfiles/input_day5.prod", std::ios::in);
+  if (file.is_open()) {
+    std::string line{};
+    while (getline(file, line)) {
+      // std::cout << line.size() << line << '\n';
+      if (line[0] != 'm' && line.size() > 0 && line[1] != '1') {
+        for (int i = 0, k = 1; i < stack_number; ++i, k += 4) {
+          // std::cout << line[k];
+          std::string s(1, line[k]);
+          if (s != " ") {
+            stacks[i].emplace_front(s);
+          }
+        }
+      }
+      if (line[0] == 'm') {
+
+        to = static_cast<int>(line[size(line) - 1]) - 48 - 1;
+        // -1 for length offset                 ^
+        //   -48 for char conv (better use -'0')       ^
+        // -1 for array offset                             ^
+        from = static_cast<int>(line[size(line) - 6]) - 48 - 1;
+        if (std::isdigit(static_cast<int>(line[6]))) {
+          move = static_cast<int>(line[6]) - 48 +
+                 10 * (static_cast<int>(line[5]) - 48);
+
+        } else {
+          move = static_cast<int>(line[5]) - 48;
+        }
+
+        // std::cout << "   " << move << "\t" << from << "\t" << to << "\n\n";
+        for (int i = 0; i < move; ++i) {
+          tmp.push_front(stacks[from].back());
+          stacks[from].pop_back();
+        }
+        for (int i = 0; i < move; ++i) {
+          stacks[to].push_back(tmp.front());
+          tmp.pop_front();
+        }
+      }
+    }
+  }
+  std::string result{""};
+  for (int i = 0; i < stack_number; ++i) {
+
+    result += stacks[i].back();
+
+    std::cout << stacks[i].back();
+  }
+  std::cout << "\n";
+  std::cout << result;
+  std::cout << "\n";
+  std::cout << "\n";
+}
+
+//////////////////////////////////////////////////////////
+//////////////////// hardcoded stack /////////////////////
+//////////////////////////////////////////////////////////
 void day5_1() {
 
   std::vector<std::deque<std::string>> stacks;
