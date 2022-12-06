@@ -3,6 +3,7 @@
 #include "day3.cpp"
 #include "day4.cpp"
 #include "day5.cpp"
+#include "day6.cpp"
 
 int main() {
   // day1_1();
@@ -14,9 +15,11 @@ int main() {
   // day4_1();
   //  day4_2();
   // day5_1b();
-  day5_2b();
+  // day5_2b();
   //  day5_1(); // hardcoded 'stack'
   //  day5_2(); // hardcoded 'stack'
+  // day6_1();
+  day6_2();
 
   return 0;
 }
