@@ -1,11 +1,11 @@
-#include "day1.cpp"
-#include "day2.cpp"
-#include "day3.cpp"
-#include "day4.cpp"
-#include "day5.cpp"
-#include "day6.cpp"
-#include "day7.cpp"
-#include "day8.cpp"
+#include "bin/day1.cpp"
+#include "bin/day2.cpp"
+#include "bin/day3.cpp"
+#include "bin/day4.cpp"
+#include "bin/day5.cpp"
+#include "bin/day6.cpp"
+#include "bin/day7.cpp"
+#include "bin/day8.cpp"
 
 int main() {
   // day1_1();

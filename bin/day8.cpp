@@ -29,15 +29,15 @@ bool calc_visibilityd1(int col, int row, int max_height, int max_width,
   //           << largest_tree_upwards << "  " << largest_tree_downwards << "  "
   //           << '\n';
 
-  if (largest_tree_leftside >= treehouse_height &&
-      largest_tree_rightside >= treehouse_height &&
-      largest_tree_upwards >= treehouse_height &&
-      largest_tree_downwards >= treehouse_height) {
+  if (not(largest_tree_leftside >= treehouse_height &&
+          largest_tree_rightside >= treehouse_height &&
+          largest_tree_upwards >= treehouse_height &&
+          largest_tree_downwards >= treehouse_height)) {
     // std::cout << "false" << '\n';
-    return false;
+    return true;
   } else {
     // std::cout << "true" << '\n';
-    return true;
+    return false;
   }
 }
 
