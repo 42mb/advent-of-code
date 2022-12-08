@@ -4,6 +4,8 @@
 #include "day4.cpp"
 #include "day5.cpp"
 #include "day6.cpp"
+#include "day7.cpp"
+#include "day8.cpp"
 
 int main() {
   // day1_1();
@@ -19,7 +21,10 @@ int main() {
   //  day5_1(); // hardcoded 'stack'
   //  day5_2(); // hardcoded 'stack'
   // day6_1();
-  day6_2();
-
+  // day6_2();
+  // day7_1(); // WIP
+  // day7_2(); //WIP
+  // day8_1();
+  day8_2();
   return 0;
 }
