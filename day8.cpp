@@ -8,27 +8,31 @@ typedef std::vector<std::vector<int>> matrix;
 bool calc_visibilityd1(int col, int row, int max_height, int max_width,
                        matrix &d2vec) {
 
-  int min_height{}, min_width{}, point_value = d2vec[row][col];
-  int max_val_l = -1, max_val_r = -1, max_val_u = -1, max_val_d = -1;
+  int min_height{}, min_width{}, treehouse_height = d2vec[row][col];
+  int largest_tree_leftside = -1, largest_tree_rightside = -1,
+      largest_tree_upwards = -1, largest_tree_downwards = -1;
 
   for (int i = 0; i < col; ++i) {
-    max_val_l = std::max(d2vec[row][i], max_val_l);
+    largest_tree_leftside = std::max(d2vec[row][i], largest_tree_leftside);
   }
   for (int i = col + 1; i < max_width; ++i) {
-    max_val_r = std::max(d2vec[row][i], max_val_r);
+    largest_tree_rightside = std::max(d2vec[row][i], largest_tree_rightside);
   }
   for (int i = 0; i < row; ++i) {
-    max_val_u = std::max(d2vec[i][col], max_val_u);
+    largest_tree_upwards = std::max(d2vec[i][col], largest_tree_upwards);
   }
   for (int i = row + 1; i < max_height; ++i) {
-    max_val_d = std::max(d2vec[i][col], max_val_d);
+    largest_tree_downwards = std::max(d2vec[i][col], largest_tree_downwards);
   }
 
-  //   std::cout << max_val_l << "  " << max_val_r << "  " << max_val_u << "  "
-  //             << max_val_d << "  " << '\n';
+  // std::cout << largest_tree_leftside << "  " << largest_tree_rightside<< "  "
+  //           << largest_tree_upwards << "  " << largest_tree_downwards << "  "
+  //           << '\n';
 
-  if (max_val_l >= point_value && max_val_r >= point_value &&
-      max_val_u >= point_value && max_val_d >= point_value) {
+  if (largest_tree_leftside >= treehouse_height &&
+      largest_tree_rightside >= treehouse_height &&
+      largest_tree_upwards >= treehouse_height &&
+      largest_tree_downwards >= treehouse_height) {
     // std::cout << "false" << '\n';
     return false;
   } else {
@@ -44,7 +48,7 @@ int day8_1() {
   std::string line{};
   int are_visible{};
   int height{}, width{};
-  // input into 2d vector
+
   while (file >> line) {
     width = line.size();
     std::vector<int> v;
@@ -85,43 +89,44 @@ int calc_scenic_view(int col, int row, int max_height, int max_width,
 
   int min_height{}, min_width{};
   int point_value = d2vec[row][col];
-  int view_distance_l{1}, view_distance_r{1}, view_distance_u{1},
-      view_distance_d{1};
+  int view_distance_leftside{1}, view_distance_rightside{1},
+      view_distance_upwards{1}, view_distance_downwards{1};
 
   for (int i = col - 1; i > 0; --i) {
     if (d2vec[row][i] < point_value) {
-      view_distance_l++;
+      view_distance_leftside++;
     } else {
       break;
     }
   }
   for (int i = col + 1; i < max_width - 1; ++i) {
     if (d2vec[row][i] < point_value) {
-      view_distance_r++;
+      view_distance_rightside++;
     } else {
       break;
     }
   }
   for (int i = row - 1; i > 0; --i) {
     if (d2vec[i][col] < point_value) {
-      view_distance_u++;
+      view_distance_upwards++;
     } else {
       break;
     }
   }
   for (int i = row + 1; i < max_height - 1; ++i) {
-
     if (d2vec[i][col] < point_value) {
-      view_distance_d++;
+      view_distance_downwards++;
     } else {
       break;
     }
   }
 
-  // std::cout << view_distance_l << "  " << view_distance_r << "  "<<
-  // view_distance_u << "  " << view_distance_d << "  " << '\n';
+  // std::cout << view_distance_leftside << "  " << view_distance_rightside << "
+  // "<< view_distance_upwards << "  " << view_distance_downwards << "  " <<
+  // '\n';
 
-  return view_distance_d * view_distance_l * view_distance_r * view_distance_u;
+  return view_distance_downwards * view_distance_leftside *
+         view_distance_rightside * view_distance_upwards;
 }
 
 int day8_2() {
@@ -143,7 +148,7 @@ int day8_2() {
     ++height;
   }
 
-  // calculation
+  // calculation scenic score
   for (int row = 1; row < width - 1; ++row) {
     for (int col = 1; col < height - 1; ++col) {
 
