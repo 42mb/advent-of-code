@@ -6,6 +6,7 @@
 #include "bin/day6.cpp"
 #include "bin/day7.cpp"
 #include "bin/day8.cpp"
+#include "bin/day9.cpp"
 
 int main() {
   // day1_1();
@@ -25,6 +26,8 @@ int main() {
   // day7_1(); // WIP
   // day7_2(); //WIP
   // day8_1();
-  day8_2();
+  // day8_2();
+  day9_1();
+  // day9_1();
   return 0;
 }
