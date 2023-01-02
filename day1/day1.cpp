@@ -8,7 +8,7 @@
 void day1_1() {
   int max_calories{};
   std::fstream file;
-  file.open("inputfiles/input_day1p1.txt", std::ios::in);
+  file.open("input_day1p1.txt", std::ios::in);
   if (file.is_open()) {
     std::string line;
     int calories{};
@@ -22,19 +22,19 @@ void day1_1() {
       }
     }
   }
-  std::cout << "\n" << max_calories << std::endl;
+  std::cout << max_calories << std::endl;
 }
 
 void day1_2() {
   std::vector<int> max_calories(3, 0);
 
   std::fstream file;
-  file.open("inputfiles/input_day1p1.txt", std::ios::in);
+  file.open("input_day1p1.txt", std::ios::in);
   if (file.is_open()) {
     std::string line;
     int calories{};
     while (getline(file, line)) {
-      std::cout << line << "\n";
+      // std::cout << line << "\n";
       if (!line.empty()) {
         calories += std::stoi(line);
       } else {
@@ -50,8 +50,17 @@ void day1_2() {
   }
   int maxsum{};
   for (auto &x : max_calories) {
-    std::cout << x << "\n";
+    // std::cout << x << "\n";
     maxsum += x;
   }
-  std::cout << "\n" << maxsum << std::endl;
+  std::cout << maxsum << "\n\n";
+}
+
+int main() {
+
+  std::cout << "day1: " << '\n';
+  day1_1();
+  std::cout << "\n";
+  std::cout << "day2: " << '\n';
+  day1_2();
 }

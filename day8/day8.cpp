@@ -43,7 +43,7 @@ bool calc_visibilityd1(int col, int row, int max_height, int max_width,
 
 int day8_1() {
   //
-  std::ifstream file("inputfiles/input_day8.prod");
+  std::ifstream file("input_day8.prod");
   matrix d2vec;
   std::string line{};
   int are_visible{};
@@ -81,7 +81,9 @@ int day8_1() {
   //     std::cout << std::endl;
   //   }
   //   std::cout << "width: " << width << '\t' << "height: " << height << '\n';
-  std::cout << '\n' << "visible: " << '\n' << are_visible << '\n';
+
+  // std::cout << '\n' << "visible: " << '\n' << are_visible << '\n';
+  std::cout << are_visible << '\n';
 }
 
 int calc_scenic_view(int col, int row, int max_height, int max_width,
@@ -132,7 +134,7 @@ int calc_scenic_view(int col, int row, int max_height, int max_width,
 int day8_2() {
   //
   int scenic_score = -1;
-  std::ifstream file("inputfiles/input_day8.prod");
+  std::ifstream file("input_day8.prod");
   matrix d2vec;
   std::string line{};
   int height{}, width{};
@@ -157,6 +159,16 @@ int day8_2() {
     }
   }
 
-  std::cout << "width: " << width << '\t' << "height: " << height << '\n';
-  std::cout << '\n' << "scenicscore: " << '\n' << scenic_score << '\n';
+  // std::cout << "width: " << width << '\t' << "height: " << height << '\n';
+  // std::cout << '\n' << "scenicscore: " << '\n' << scenic_score << '\n';
+  std::cout << scenic_score << '\n';
+}
+
+int main() {
+
+  std::cout << "day1: " << '\n';
+  day8_1();
+  std::cout << "\n";
+  std::cout << "day2: " << '\n';
+  day8_2();
 }

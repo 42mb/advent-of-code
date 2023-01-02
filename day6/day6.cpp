@@ -12,7 +12,7 @@
 
 void day6_1() {
   std::fstream file;
-  file.open("inputfiles/input_day6.prod", std::ios::in);
+  file.open("input_day6.prod", std::ios::in);
   if (file.is_open()) {
     std::string line;
 
@@ -36,7 +36,7 @@ void day6_1() {
 void day6_2() {
 
   std::fstream file;
-  file.open("inputfiles/input_day6.prod", std::ios::in);
+  file.open("input_day6.prod", std::ios::in);
   if (file.is_open()) {
     std::string line;
 
@@ -55,4 +55,13 @@ void day6_2() {
       }
     }
   }
+}
+
+int main() {
+
+  std::cout << "day1: " << '\n';
+  day6_1();
+  std::cout << "\n";
+  std::cout << "day2: " << '\n';
+  day6_2();
 }

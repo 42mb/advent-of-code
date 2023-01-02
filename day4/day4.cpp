@@ -10,7 +10,7 @@
 void day4_1() {
   int counter_result{};
   std::fstream file;
-  file.open("inputfiles/input_day4.prod", std::ios::in);
+  file.open("input_day4.prod", std::ios::in);
   if (file.is_open()) {
     std::string line;
     std::string left, right;
@@ -37,13 +37,13 @@ void day4_1() {
       }
     }
   }
-  std::cout << counter_result;
+  std::cout << counter_result << "\n";
 }
 
 void day4_2() {
   int counter_result{};
   std::fstream file;
-  file.open("inputfiles/input_day4.prod", std::ios::in);
+  file.open("input_day4.prod", std::ios::in);
   if (file.is_open()) {
     std::string line;
     std::string left, right;
@@ -66,8 +66,16 @@ void day4_2() {
         counter_result++;
       }
     }
-    std::cout << "\n"
-              << counter_result << "\n"
+    std::cout << counter_result << "\n"
               << "\n";
   }
+}
+
+int main() {
+
+  std::cout << "day1: " << '\n';
+  day4_1();
+  std::cout << "\n";
+  std::cout << "day2: " << '\n';
+  day4_2();
 }

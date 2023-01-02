@@ -14,7 +14,7 @@ void day5_1b() {
   int stack_number{0}, move{}, from{}, to{};
 
   // read out stack_number
-  file1.open("inputfiles/input_day5.prod", std::ios::in);
+  file1.open("input_day5.prod", std::ios::in);
   if (file1.is_open()) {
     std::string line;
     while (getline(file1, line)) {
@@ -34,7 +34,7 @@ void day5_1b() {
   }
 
   std::fstream file;
-  file.open("inputfiles/input_day5.prod", std::ios::in);
+  file.open("input_day5.prod", std::ios::in);
   if (file.is_open()) {
     std::string line{};
     while (getline(file, line)) {
@@ -95,7 +95,7 @@ void day5_2b() {
   int stack_number{0}, move{}, from{}, to{};
 
   // read out stack_number
-  file1.open("inputfiles/input_day5.prod", std::ios::in);
+  file1.open("input_day5.prod", std::ios::in);
   if (file1.is_open()) {
     std::string line;
     while (getline(file1, line)) {
@@ -115,7 +115,7 @@ void day5_2b() {
   }
 
   std::fstream file;
-  file.open("inputfiles/input_day5.prod", std::ios::in);
+  file.open("input_day5.prod", std::ios::in);
   if (file.is_open()) {
     std::string line{};
     while (getline(file, line)) {
@@ -195,7 +195,7 @@ void day5_1() {
   int cnt{0};
   int move{}, from{}, to{};
   std::fstream file;
-  file.open("inputfiles/input_day5.prod", std::ios::in);
+  file.open("input_day5.prod", std::ios::in);
   if (file.is_open()) {
     std::string line;
     while (getline(file, line)) {
@@ -265,7 +265,7 @@ void day5_2() {
   int cnt{0};
   int move{}, from{}, to{};
   std::fstream file;
-  file.open("inputfiles/input_day5.prod", std::ios::in);
+  file.open("input_day5.prod", std::ios::in);
   if (file.is_open()) {
     std::string line;
     while (getline(file, line)) {
@@ -310,4 +310,12 @@ void day5_2() {
   std::cout << "\n";
   std::cout << cnt;
   std::cout << "\n";
+}
+
+int main() {
+
+  std::cout << "day1: " << '\n';
+  day5_1b();
+  std::cout << "day2: " << '\n';
+  day5_2b();
 }

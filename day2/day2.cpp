@@ -7,7 +7,7 @@
 #include <vector>
 
 void day2_1() {
-  std::ifstream file("inputfiles/input_day2.txt");
+  std::ifstream file("input_day2.txt");
   std::string player1{};
   std::string player_enemy{};
   int score{};
@@ -79,7 +79,7 @@ void day2_1() {
 }
 
 void day2_2() {
-  std::ifstream file("inputfiles/input_day2.txt");
+  std::ifstream file("input_day2.txt");
   std::string player1{};
   std::string player_enemy{};
   int score{};
@@ -136,5 +136,14 @@ void day2_2() {
       }
     }
   }
-  std::cout << "\n" << score << "\n";
+  std::cout << score << "\n";
+}
+
+int main() {
+
+  std::cout << "day1: " << '\n';
+  day2_1();
+  std::cout << "\n\n";
+  std::cout << "day2: " << '\n';
+  day2_2();
 }

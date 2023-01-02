@@ -36,7 +36,7 @@ int find_wrongly_placed_item_day1(std::string &line) {
 void day3_1() {
   int result{};
   std::fstream file;
-  file.open("inputfiles/input_day3.txt", std::ios::in);
+  file.open("input_day3.txt", std::ios::in);
   if (file.is_open()) {
     std::string line;
 
@@ -47,7 +47,7 @@ void day3_1() {
       result += determine_item_priority_day1(item);
     }
   }
-  std::cout << '\n' << result << "\n\n";
+  std::cout << result << "\n";
 }
 
 /////////////////////////////////////////////////////////////
@@ -75,7 +75,7 @@ int find_badge(std::string &line1, std::string &line2, std::string &line3) {
 void day3_2() {
   int result{};
   std::fstream file;
-  file.open("inputfiles/input_day3.txt", std::ios::in);
+  file.open("input_day3.txt", std::ios::in);
   if (file.is_open()) {
     std::string line, line1, line2, line3;
     int counter{1};
@@ -96,5 +96,14 @@ void day3_2() {
       counter++;
     }
   }
-  std::cout << '\n' << result << "\n\n";
+  std::cout << result << "\n\n";
+}
+
+int main() {
+
+  std::cout << "day1: " << '\n';
+  day3_1();
+  std::cout << "\n";
+  std::cout << "day2: " << '\n';
+  day3_2();
 }

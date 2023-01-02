@@ -2,8 +2,8 @@
 #include <iostream>
 #include <map>
 #include <unordered_map>
-struct position {
 
+struct position {
   int x = 1000;
   int y = 1000;
 
@@ -54,7 +54,7 @@ void day9_1() {
   past_visits["10001000"]++;
   char travel_direction{};
   int travel_distance{};
-  std::ifstream file("inputfiles/input_day9.prod");
+  std::ifstream file("input_day9.prod");
   while (file >> travel_direction, file >> travel_distance) {
     // std::cout << travel_direction << " " << travel_distance << '\n';
     for (int i = 0; i < travel_distance; ++i) {
@@ -63,7 +63,21 @@ void day9_1() {
       past_visits[std::to_string(tail.x) + std::to_string(tail.y)]++;
     }
   }
-
+  // std::cout << "\n\n\n";
+  int cnt{};
+  for (auto &[key, value] : past_visits) {
+    // std::cout << key << " " << value << '\n';
+    if (value >= 1) {
+      cnt++;
+    }
+  }
+  // std::cout << '\n' << cnt << '\n';
   std::cout << past_visits.size() << '\n';
 }
-// day9_2(){}
+
+int main() {
+
+  std::cout << "day1: " << '\n';
+  day9_1();
+  std::cout << "\n";
+}
