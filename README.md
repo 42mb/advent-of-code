@@ -7,7 +7,7 @@ https://adventofcode.com/2022
 
 | Day | Name                                                             | Solution |
 | --- | ---------------------------------------------------------------- | ----- |
-| 01  | [Calorie Counting](https://adventofcode.com/2022/day/1)          | [2/2](day1/day1.cpp) )    |
+| 01  | [Calorie Counting](https://adventofcode.com/2022/day/1)          | [2/2](day1/day1.cpp)     |
 | 02  | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)       | [2/2](day2/day2.cpp)    |
 | 03  | [Rucksack Reorganization](https://adventofcode.com/2022/day/3)   | [2/2](day3/day3.cpp)    |
 | 04  | [Camp Cleanup](https://adventofcode.com/2022/day/4)              | [2/2](day4/day4.cpp)     |
