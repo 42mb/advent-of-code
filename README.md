@@ -16,6 +16,5 @@ https://adventofcode.com/2022
 | 08  | [Treetop Tree House](https://adventofcode.com/2022/day/8)        | [2/2](day8/day8.cpp)     |
 | 09  | [Rope Bridge](https://adventofcode.com/2022/day/9)               | [1/2](day9/day9.cpp)    |
 | 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)         | [1/2](day10/day10.cpp)    |
-| 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)     | [1/2](day11/day11.cpp)     |
 | 18  | [Boiling Boulders](https://adventofcode.com/2022/day/18)         | [1/2](day18/day18.cpp)    |
 | 25  | [Full of Hot Air](https://adventofcode.com/2022/day/25)          | [1/2](day25/day25.cpp)    |
