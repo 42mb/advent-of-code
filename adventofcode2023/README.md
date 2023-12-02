@@ -9,5 +9,5 @@ https://adventofcode.com/2023
 
 | Day | Name                                                             | Solution |
 | --- | ---------------------------------------------------------------- | ----- |
-| 01  | [Trebuchet?!](https://adventofcode.com/2023/day/1)          | [2/2](day1/day1.cpp)     |
+| 01  | [Trebuchet?!](https://adventofcode.com/2023/day/1)          | [2/2](https://github.com/42mb/advent-of-code/blob/main/adventofcode2023/day01/main.rs)     |
 | 02  | [Cube Conundrum](https://adventofcode.com/2023/day/2)       | [2/2](day2/day2.cpp)    |
