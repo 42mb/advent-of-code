@@ -136,9 +136,7 @@ fn day2_2() -> i32 {
 
         result += color_max.product();
 
-        color_max.green = 0;
-        color_max.blue = 0;
-        color_max.red = 0;
+        color_max.set_to_zero();
     }
     //println!("{}", result);
     return result;
