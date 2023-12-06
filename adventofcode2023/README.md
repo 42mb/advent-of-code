@@ -2,6 +2,7 @@
 Personal documentation of adventofcode2022    
 
 I plan to use AOC2023 to learn more about the Rust programming language.   
+Might switch to C++ or GO.
 
 https://adventofcode.com/2023  
 
