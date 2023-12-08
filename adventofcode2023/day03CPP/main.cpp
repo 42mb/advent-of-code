@@ -3,13 +3,13 @@
 #include <string>
 #include <vector>
 
-struct sym {
+struct sym { //symbol
     std::pair<int, int> coordinate{};
     char digit{};
     std::vector<int>numbers{};
 };
 
-struct nmb{
+struct nmb{ //number
     std::pair<int, int> coordinate{};
     int len{};
     int nmb;
@@ -17,44 +17,44 @@ struct nmb{
 };
 
 int main() {
-    std::ifstream myfile ("/home/archi/Projects/adventofcode/2023/day03CPP/day3.prod");
-    std:: string line {};
     std::vector<sym> symbolList{};
     std::vector<nmb> numberList{};
-    int x{}, y{};
+
+    std::ifstream myfile ("/home/archi/Projects/adventofcode/2023/day03CPP/day3.prod");
+    std:: string line {};
+    int y{};
     if(!myfile.is_open()) {
-        std::cout << "file not found";
+        std::cout << "file not found\n";
     } else {
-        while ( std::getline (myfile, line)) {
-            x=0;
-        for(int xx =0; xx<line.length(); ++xx) {
-                if(isdigit(line[xx]) == false && line[xx]!='.') {
-                    symbolList.push_back(sym({xx,y}, line[xx]));
+        while (std::getline (myfile, line)) {
+        for(int x =0; x < line.length(); ++x) {
+                if(isdigit(line[x]) == false && line[x] != '.') {
+                    symbolList.push_back(sym({x, y}, line[x]));
                 }
-                if(isdigit(line[xx])) {
+                if(isdigit(line[x])) {
                     int len{};
                     std::string nmb;
-                    int coordinateX = xx;
+                    int coordinateX = x;
                     int coordinateY = y;
-                    while(isdigit(line[xx])){
+                    while(isdigit(line[x])){
                         len++;
-                        nmb+=line[xx];
-                        xx++;
+                        nmb+=line[x];
+                        x++;
                     }
-                    xx-=1;
-                    std::vector<std::pair<int, int>> coordAround{};
-                    coordAround.emplace_back(coordinateX-1, coordinateY);
-                    coordAround.emplace_back(coordinateX+len, coordinateY); //??
+                    x-=1;
+                    std::vector<std::pair<int, int>> coordinatesAroundNumber{};
+                    coordinatesAroundNumber.emplace_back(coordinateX - 1, coordinateY);
+                    coordinatesAroundNumber.emplace_back(coordinateX + len, coordinateY); //??
                     for( int t = -1; t<len+1; ++t) {
-                        coordAround.emplace_back(coordinateX+t, coordinateY-1);
-                        coordAround.emplace_back(coordinateX+t, coordinateY+1);
+                        coordinatesAroundNumber.emplace_back(coordinateX + t, coordinateY - 1);
+                        coordinatesAroundNumber.emplace_back(coordinateX + t, coordinateY + 1);
                         ///////////////////////
                         //####
-                        //#23#      coorAround should be the #
+                        //#23#      coorAroundNmb should be the #
                         //####
                         ////////////////
                     }
-                    struct nmb N({coordinateX, coordinateY}, len, std::stoi(nmb), coordAround);
+                    struct nmb N({coordinateX, coordinateY}, len, std::stoi(nmb), coordinatesAroundNumber);
                     numberList.push_back(N);
                 }
             }
@@ -65,17 +65,17 @@ int main() {
 
     int sum{};
     for(auto &nmb:numberList) {
-        for(auto & around: nmb.coordinatesAround) {
-            bool isAround{false};
+        for(auto & adjacentCoordinate: nmb.coordinatesAround) {
+            bool isAdjacent{false};
             for(auto &sym: symbolList) {
-               if(sym.coordinate.first == around.first && sym.coordinate.second == around.second) {
+               if(sym.coordinate.first == adjacentCoordinate.first && sym.coordinate.second == adjacentCoordinate.second) {
                    if(sym.digit == '*') {
                        sym.numbers.emplace_back(nmb.nmb);
                    }
-                  isAround = true;
+                   isAdjacent = true;
                }
             }
-            if(isAround) {
+            if(isAdjacent) {
                 sum+=nmb.nmb;
             }
         }
